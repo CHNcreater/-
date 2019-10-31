@@ -5,3 +5,36 @@
 ### 直接插入排序算法
   1. 基本思想图解：
   ![直接插入排序](https://img2018.cnblogs.com/blog/1439869/201907/1439869-20190717181905771-748910235.gif)
+  2. C语言代码实现：
+  ```
+#include <stdio.h>
+#include <stdlib.h>
+
+void InsertSort(int data[],int length){
+    int i,j,temp;
+    for(i = 1;i<length;i++){
+        j = i;
+        temp = data[i];
+        while(j>0&&temp<data[j-1]){
+            data[j] = data[j-1];
+            j--;
+        }
+        data[j] = temp;
+    }
+}
+
+void print(int data[],int length){
+    for(int i = 0;i<length;i++){
+        printf("%d",data[i]);
+    }
+}
+
+int main()
+{
+    int data[10] = {5,2,9,8,3,4,7,6,1,0};
+    int length = 10;
+    InsertSort(data,length);
+    print(data,length);
+    return 0;
+}
+  ```
