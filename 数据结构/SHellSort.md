@@ -6,42 +6,43 @@
     1. 把较大的数据集合分割成若干个小组(逻辑上分组)，然后对每一个小组分别进行插入排序，此时，插入排序所作用的数据量比较小，插入的效率比较高。
     2. 每个分组进行插入排序后，各个分组就变成了有序的了。
     
-    基于这个思路，下面是代码实现：
-    ```
+   基于这个思路，下面是代码实现：  
+    
+    ```  
     #include <stdio.h>
-#include <stdlib.h>
+    #include <stdlib.h>
 
-void HellSort(int data,int length){
-    for(int gap = length/2;gap>0;gap /= 2){//初始分组按照数组最长长度的一半，以后每一轮减小一半
-        DirectlyInsertSort(data,gap,length);
-    }
-}
-
-void DirectlyInsertSort(int data[],int gap,int length){//直接插入排序算法
-    for(int i = gap;i<length;i++){
-        int temp = data[i];
-        int j = i;
-        while(j-gap>=0&&data[j-gap]>temp){
-            data[j] = data[j-gap];
-            j = j - gap;
+    void HellSort(int data,int length){
+        for(int gap = length/2;gap>0;gap /= 2){//初始分组按照数组最长长度的一半，以后每一轮减小一半
+            DirectlyInsertSort(data,gap,length);
         }
-        data[j] = temp;
     }
-}
 
-void print(int data[],int length){
-    for(int i = 0;i<length;i++){
-        printf("%d",data[i]);
+    void DirectlyInsertSort(int data[],int gap,int length){//直接插入排序算法
+        for(int i = gap;i<length;i++){
+            int temp = data[i];
+            int j = i;
+            while(j-gap>=0&&data[j-gap]>temp){
+                data[j] = data[j-gap];
+                j = j - gap;
+            }
+            data[j] = temp;
+        }
     }
-}
 
-int main()
-{
-    int data[10] = {5,1,9,2,8,6,4,7,3,0};
-    int length = 10;
-    HellSort(data,length);
-    print(data,length);
-    return 0;
-}
+    void print(int data[],int length){
+        for(int i = 0;i<length;i++){
+            printf("%d",data[i]);
+        }
+    }
+
+    int main()
+    {
+        int data[10] = {5,1,9,2,8,6,4,7,3,0};
+        int length = 10;
+        HellSort(data,length);
+        print(data,length);
+        return 0;
+    }
 
     ```
