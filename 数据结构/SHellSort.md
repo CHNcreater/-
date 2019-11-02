@@ -8,7 +8,7 @@
     
    基于这个思路，下面是代码实现：  
     
-    ```  
+```
     #include <stdio.h>
     #include <stdlib.h>
 
@@ -44,5 +44,4 @@
         print(data,length);
         return 0;
     }
-
-    ```
+```
